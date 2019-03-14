@@ -6,7 +6,7 @@ var fs = require('fs');
 var server = http.createServer(function(req, res) {
   res.writeHead(200, {'Content-Type' : 'text/html'});
   res.end(fs.readFileSync(__dirname + '/index.html', 'utf-8'));
-}).listen(3000);  // ポート競合の場合は値を変更
+}).listen(process.env.PORT || 3000);  // ポート競合の場合は値を変更
 
 // S03. HTTPサーバにソケットをひも付ける（WebSocket有効化）
 var io = socketio.listen(server);
